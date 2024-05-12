@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html, body {
+        @apply h-full;
+    }
+
+    .animated-underline {
+        @apply relative;
+    }
+
+    .animated-underline::before {
+        @apply content-[''] absolute block w-full h-[2px] -bottom-[2px] left-0 bg-blue-300 scale-x-0 transition-transform ease-in-out;
+    }
+
+    .animated-underline:hover::before {
+        @apply scale-x-100;
+    }
+
+    a:not(.clean) {
+        @apply text-blue-300 animated-underline before:bg-blue-300;
+    }
+
+    .btn {
+        @apply focus:ring-4 rounded-lg px-5 py-2.5 me-2 mb-2 bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-gray-700 hover:scale-110 transition-transform origin-center;
+    }
+
+    .btn-primary {
+        @apply bg-blue-500 hover:bg-blue-600 focus:ring-blue-700;
+    }
+}
