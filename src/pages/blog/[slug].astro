@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Image from "astro/components/Image.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+	const entries = await getCollection("blog");
+	return entries.map((entry) => ({
+		params: {
+			slug: entry.slug,
+		},
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={entry.data.title}>
+	<h1>{entry.data.title}</h1>
+	{entry.data.image ? <Image src={entry.data.image.src} alt={entry.data.image.alt} /> : null}
+	<Content />
+</BaseLayout>
