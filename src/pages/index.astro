@@ -2,6 +2,8 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Image from "astro/components/Image.astro";
 import ProfilePicture from "@assets/images/profile.png";
+
+const CV_URL = "https://github.com/KanarekLife/CV/releases/latest/download/cv.pdf";
 ---
 
 <BaseLayout>
@@ -14,7 +16,7 @@ import ProfilePicture from "@assets/images/profile.png";
 			<p class="text-lg text-center md:text-left text-gray-300">Backend Software Developer</p>
 			<div class="flex gap-4 mt-16 md:mt-8 justify-center md:justify-normal">
 				<a href="/blog/" class="clean btn btn-primary">Checkout my blog</a>
-				<a href="/cv.pdf" target="_blank" class="clean btn">Download my CV</a>
+				<a href={CV_URL} target="_blank" class="clean btn">Download my CV</a>
 			</div>
 		</div>
 	</section>
