@@ -1,9 +1,24 @@
 ---
 export interface Props {
 	href: string;
+	color?: "blue";
+	variant?: "primary";
+	newTab?: boolean;
 }
+
+const { href, newTab, color, variant } = Astro.props as Props;
+
+const buttonVariants = {
+	normal: "bg-gray-900",
+	primary: "bg-blue-900"
+};
+
+const colorVariants = {
+	blue: "bg-blue-600 group-hover:shadow-blue-600",
+};
 ---
 
-<a href={Astro.props.href} class="px-5 py-2.5">
-	<slot />
+<a href={href} target={newTab ? "_blank" : "_self"} class:list=`group px-5 py-2.5 relative ${buttonVariants[variant ?? "normal"]} rounded-md`>
+	<div class:list=`absolute inset-0 w-1 ${colorVariants[color ?? "blue"]} transition-all duration-200 ease-out group-hover:w-full rounded-md`></div>
+	<span class="relative group-hover:text-white"><slot /></span>
 </a>

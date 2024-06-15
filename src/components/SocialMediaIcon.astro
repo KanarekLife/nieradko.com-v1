@@ -1,0 +1,35 @@
+---
+import GitHubIcon from "@assets/icons/github.svg?raw";
+import LinkedInIcon from "@assets/icons/linkedin.svg?raw";
+import EmailIcon from "@assets/icons/at-sign.svg?raw";
+import GlobeIcon from "@assets/icons/globe.svg?raw";
+
+export interface Props {
+	social: "github" | "linkedin" | "email" | "website";
+	content?: string;
+}
+
+const { social, content } = Astro.props as Props;
+
+const urls = {
+	github: `https://github.com/${content}`,
+	linkedin: `https://linkedin.com/in/${content}`,
+	email: `mailto:${content}`,
+	website: content,
+};
+
+const icons = {
+	github: GitHubIcon,
+	linkedin: LinkedInIcon,
+	email: EmailIcon,
+	website: GlobeIcon,
+};
+---
+
+{
+	content ? (
+		<a href={urls[social]} title={content} target="_blank" class="block transition-transform hover:scale-125 hover:text-blue-400">
+			<Fragment set:html={icons[social]} />
+		</a>
+	) : null
+}

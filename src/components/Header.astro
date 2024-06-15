@@ -1,19 +1,18 @@
 ---
 import config from "@config";
+import Link from "@components/Link.astro";
 ---
 
 <header class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between items-center">
 	<div>
-		<a href="/" class="clean text-white text-4xl block origin-top-left transition-transform hover:scale-110">{config.siteTitle}</a>
+		<Link href="/" class="text-4xl" color="white">{config.siteTitle}</Link>
 	</div>
 	<nav>
 		<ul class="flex gap-4">
 			{
 				config.menu.map((item) => (
 					<li>
-						<a href={item.path} class="clean animated-underline text-white before:bg-white">
-							{item.name}
-						</a>
+						<Link href={item.path} color="white">{item.name}</Link>
 					</li>
 				))
 			}

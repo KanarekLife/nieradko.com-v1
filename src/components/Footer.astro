@@ -1,9 +1,7 @@
 ---
 import config from "@config";
-import GitHubIcon from "@assets/icons/github.svg?raw";
-import LinkedInIcon from "@assets/icons/linkedin.svg?raw";
-import EmailIcon from "@assets/icons/at-sign.svg?raw";
-import GlobeIcon from "@assets/icons/globe.svg?raw";
+import Link from "./Link.astro";
+import SocialMediaIcon from "./SocialMediaIcon.astro";
 
 function getCopyrightYears() {
 	const startYear = config.siteCreatedAt;
@@ -13,35 +11,11 @@ function getCopyrightYears() {
 ---
 
 <footer class="flex flex-col items-center gap-2 md:flex-row md:items-start md:gap-0 justify-between">
-	<div><a href="/">{config.siteTitle}</a> (<a href={config.siteRepositoryUrl} target="_blank">Source Code</a>) &copy; {getCopyrightYears()}</div>
+	<div><Link href="/">{config.siteTitle}</Link> (<Link href={config.siteRepositoryUrl} newTab>Source Code</Link>) &copy; {getCopyrightYears()}</div>
 	<div class="flex gap-4">
-		{
-			config.socials.github ? (
-				<a href={`https://github.com/${config.socials.github}`} title={config.socials.github} target="_blank" class="clean block transition-transform hover:scale-110">
-					<Fragment set:html={GitHubIcon} />
-				</a>
-			) : null
-		}
-		{
-			config.socials.linkedin ? (
-				<a href={`https://linkedin.com/in/${config.socials.linkedin}`} title={config.socials.linkedin} target="_blank" class="clean block transition-transform hover:scale-110">
-					<Fragment set:html={LinkedInIcon} />
-				</a>
-			) : null
-		}
-		{
-			config.socials.email ? (
-				<a href={`mailto:${config.socials.email}`} title={config.socials.email} class="clean block transition-transform hover:scale-110">
-					<Fragment set:html={EmailIcon} />
-				</a>
-			) : null
-		}
-		{
-			config.socials.website ? (
-				<a href={config.socials.website} title={config.socials.website} target="_blank" class="clean block transition-transform hover:scale-110">
-					<Fragment set:html={GlobeIcon} />
-				</a>
-			) : null
-		}
+		<SocialMediaIcon social="github" content={config.socials.github} />
+		<SocialMediaIcon social="linkedin" content={config.socials.linkedin} />
+		<SocialMediaIcon social="email" content={config.socials.email} />
+		<SocialMediaIcon social="website" content={config.socials.website} />
 	</div>
 </footer>
