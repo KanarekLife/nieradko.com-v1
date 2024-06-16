@@ -28,7 +28,7 @@ const icons = {
 
 {
 	content ? (
-		<a href={urls[social]} title={content} target="_blank" class="block transition-transform hover:scale-125 hover:text-blue-400">
+		<a href={urls[social]} title={content} target="_blank" class="block transition-transform hover:text-blue-400 active:text-blue-500">
 			<Fragment set:html={icons[social]} />
 		</a>
 	) : null

@@ -18,7 +18,7 @@ const colorVariants = {
 };
 ---
 
-<a href={href} target={newTab ? "_blank" : "_self"} class:list=`group px-5 py-2.5 relative ${buttonVariants[variant ?? "normal"]} rounded-md`>
-	<div class:list=`absolute inset-0 w-1 ${colorVariants[color ?? "blue"]} transition-all duration-200 ease-out group-hover:w-full rounded-md`></div>
-	<span class="relative group-hover:text-white"><slot /></span>
+<a href={href} target={newTab ? "_blank" : "_self"} class:list={`group px-5 py-2.5 relative ${buttonVariants[variant ?? "normal"]} rounded-md`}>
+	<div class:list=`absolute inset-0 w-1 ${colorVariants[color ?? "blue"]} transition-all duration-200 ease-out group-hover:w-full rounded-md group-active:bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-[#0000001a] to-transparent`></div>
+	<span class="relative group-hover:text-white flex gap-2"><slot /></span>
 </a>
