@@ -5,6 +5,7 @@ created: 2024-05-12
 image:
     src: ./bg.jpg
     alt: Featured image
+excerpt: Welcome to my new blog!
 ---
 
 Hey, there!
