@@ -1,7 +1,11 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import mdx from "@astrojs/mdx";
 
+// https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind({ applyBaseStyles: false })],
-	site: "https://nieradko.com"
+  integrations: [tailwind({
+    applyBaseStyles: false
+  }), mdx()],
+  site: "https://nieradko.com"
 });

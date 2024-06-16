@@ -1,0 +1,20 @@
+---
+export interface Props {
+	href: string;
+	color?: "blue" | "white";
+	newTab?: boolean;
+	class?: string;
+}
+
+const { href, newTab, color, class: class_args } = Astro.props as Props;
+
+const textVariants = {
+	blue: "text-blue-300 group-hover:text-white",
+	white: "text-white",
+};
+---
+
+
+<a 	href={href}
+	target={newTab ? "_blank" : "_self"}
+	class:list={[`group relative ${textVariants[color ?? 'blue']} hover:text-white`, class_args]}><span class="absolute inset-0 w-0 bg-blue-600 transition-all duration-200 ease-out group-hover:w-full -z-10"></span><slot /></a>
