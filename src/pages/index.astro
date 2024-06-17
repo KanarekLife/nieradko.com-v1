@@ -16,7 +16,7 @@ const CV_URL = "https://github.com/KanarekLife/CV/releases/latest/download/cv.pd
 		</div>
 		<div class="flex flex-col justify-center">
 			<h1 class="text-4xl md:text-5xl lg:text-7xl text-center md:text-left bold text-nowrap">Stanisław Nieradko</h1>
-			<p class="text-lg text-center md:text-left text-gray-300">Backend Software Developer</p>
+			<p class="subtitle text-lg text-center md:text-left text-gray-300">Backend Software Developer</p>
 			<div class="flex gap-8 mt-16 md:mt-12 justify-center md:justify-normal">
 				<Button href="/blog/" variant="primary"><Fragment set:html={ListIcon} />Visit my blog</Button>
 				<Button href={CV_URL}><Fragment set:html={DownloadIcon} />Download CV</Button>
@@ -24,3 +24,24 @@ const CV_URL = "https://github.com/KanarekLife/CV/releases/latest/download/cv.pd
 		</div>
 	</section>
 </BaseLayout>
+
+<script>
+	import gsap from "gsap";
+	import { TextPlugin } from "gsap/TextPlugin";
+
+	gsap.registerPlugin(TextPlugin);
+
+	function setupSubtitleCarousel(): void {
+		const titles = ["Backend Software Developer", ".NET Enthusiast", "Computer Science Student", "HomeLab Owner"];
+
+		const tl = gsap.timeline({repeat: -1});
+
+		for (const title of titles) {
+			tl.to(".subtitle", {text: title, duration: 1, delay: 5, ease: "none"});
+		}
+
+		tl.play();
+	}
+
+	setupSubtitleCarousel();
+</script>
