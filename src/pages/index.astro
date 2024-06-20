@@ -34,11 +34,12 @@ const CV_URL = "https://github.com/KanarekLife/CV/releases/latest/download/cv.pd
 	function setupSubtitleCarousel(): void {
 		const titles = ["Backend Software Developer", ".NET Enthusiast", "Computer Science Student", "HomeLab Owner"];
 
-		const tl = gsap.timeline({repeat: -1});
+		const tl = gsap.timeline({ repeat: -1 });
 
 		for (const title of titles) {
-			tl.to(".subtitle", {text: title, duration: 1, delay: 5, ease: "none"});
+			tl.to(".subtitle", { text: title, duration: 1, delay: 5, ease: "none" });
 		}
+		tl.to(".subtitle", { text: titles[0]!, duration: 1, delay: 5, ease: "none" });
 
 		tl.play();
 	}
