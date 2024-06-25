@@ -1,0 +1,26 @@
+---
+import Link from "@components/shared/Link.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+
+const page = await getEntry('pages', 'about');
+
+const { Content } = await page.render();
+
+const components = {
+	a: Link
+};
+---
+
+<BaseLayout title="about">
+    <header class="my-5">
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold">About</h1>
+    </header>
+    <main class="my-8">
+        {page.data.image ? <figure class="w-64 float-right"><Image src={page.data.image.src} alt={page.data.image.alt} class="h-full w-full rounded-lg" /><figcaption class="text-center mt-2">Me (Stanisław Nieradko)</figcaption></figure> : null}
+        <div class="content pr-8">
+            <Content components={components} />
+        </div>
+    </main>
+</BaseLayout>

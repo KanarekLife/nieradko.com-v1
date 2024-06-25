@@ -18,6 +18,20 @@ const blogCollection = defineCollection({
 		}),
 });
 
+const pagesCollection = defineCollection({
+	type: 'content',
+	schema: ({image}) =>
+		z.object({
+			image: z
+			.object({
+				src: image(),
+				alt: z.string(),
+			})
+			.optional(),
+		})
+});
+
 export const collections = {
 	blog: blogCollection,
+	pages: pagesCollection
 };

@@ -5,6 +5,7 @@ export default {
 	siteRepositoryUrl: "https://github.com/KanarekLife/nieradko.com",
 	menu: [
 		{ name: "Home", path: "/" },
+		{ name: "About", path: "/about/" },
 		{ name: "Blog", path: "/blog/" },
 	],
 	socials: {

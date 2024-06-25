@@ -17,4 +17,4 @@ const textVariants = {
 
 <a 	href={href}
 	target={newTab ? "_blank" : "_self"}
-	class:list={[`group relative ${textVariants[color ?? 'blue']} hover:text-white`, class_args]}><span class="absolute inset-0 w-0 bg-blue-600 transition-all duration-200 ease-out group-hover:w-full -z-10"></span><slot /></a>
+	class:list={[`group relative text-nowrap ${textVariants[color ?? 'blue']} hover:text-white`, class_args]}><span class="absolute inset-0 w-0 bg-blue-600 transition-all duration-200 ease-out group-hover:w-full"></span><span class="relative"><slot /></span></a>

@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content'
+import dayjs from 'dayjs';
+import CalendarIcon from "@assets/icons/calendar.svg?raw";
+import UserIcon from "@assets/icons/user.svg?raw";
+import Link from '@components/shared/Link.astro';
+
+export interface Props {
+    post: CollectionEntry<'blog'>
+}
+
+const {post} = Astro.props;
+
+const url = `/blog/${post.slug}`;
+const creationDate = dayjs(post.data.created);
+---
+
+<article class="bg-gray-900 rounded-lg h-full flex flex-col">
+    <div>
+        { post.data.image ? (<Image src={post.data.image.src} alt={post.data.image.alt} class="rounded-t-lg" />) : null }
+    </div>
+    <main class="px-4 py-4 flex-1 flex flex-col">
+        <header>
+            <h2 class="text-2xl font-semibold"><Link href={url} color='white'>{post.data.title}</Link></h2>
+            <div class="flex gap-4 text-gray-200 my-4">
+                <p class="flex gap-2"><Fragment set:html={CalendarIcon} /><time datetime={creationDate.toISOString()}>{creationDate.format("DD.MM.YYYY")}</time></p>
+                <p class="flex gap-2"><Fragment set:html={UserIcon} /><span>Stanisław Nieradko</span></p>
+            </div>
+        </header>
+        <div class="flex-1">
+            {post.data.excerpt}
+        </div>
+        <footer class="mt-4 flex justify-end">
+            <Link href={url} color='blue'>Read more</Link>
+        </footer>
+    </main>
+</article>
