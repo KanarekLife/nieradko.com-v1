@@ -10,8 +10,12 @@
 
 @layer components {
     .content {
-        @apply leading-5 flex flex-col gap-4;
+        @apply leading-5 gap-4;
     }
+
+	.content * {
+		@apply my-4;
+	}
 
 	.content h1 {
 		@apply text-4xl font-semibold;
