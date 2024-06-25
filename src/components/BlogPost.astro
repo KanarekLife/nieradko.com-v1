@@ -32,7 +32,7 @@ const components = {
 				<Image class="object-cover object-center h-full" src={post.data.image.src} alt={post.data.image.alt} />
 			</div>
 		) : null }
-		<div class="mt-4">
+		<div class="mt-4 pt-4">
 			<h1 class="text-4xl font-semibold mt-auto"><Link href={url} color="white">{post.data.title}</Link></h1>
 			<div class="flex gap-4 text-gray-200 my-2">
 				<p class="flex gap-2"><Fragment set:html={CalendarIcon} /><time datetime={creationDate.toISOString()}>{creationDate.format("DD.MM.YYYY")}</time></p>
